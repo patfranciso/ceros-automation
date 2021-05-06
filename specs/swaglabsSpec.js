@@ -1,11 +1,16 @@
+import { browser } from "protractor";
+import { currentUrlIs } from "../framework/assertion.js";
 import swaglabsLoginPage from "../pages/swagLabsLoginPage.js";
 
 describe ('Swag Labs tests', () => {
     beforeAll(async () => {
-        await swaglabsLoginPage.goto();
+        await swaglabsLoginPage.goto(browser.baseUrl);
     });
 
-    it('should log in with standard user', async ()=> {
+    fit('should log in with standard user', async ()=> {
+        swaglabsLoginPage.login();
+
+        currentUrlIs('/inventory.html');
     });
 
     it('should add an item to the cart', async () => {

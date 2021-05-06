@@ -31,8 +31,8 @@ export default class BasePage {
      * and verify/wait via loaded()
      * @requires page have both `url` and `pageLoaded` properties
      */
-    async goto() {
-        await browser.get(this.url, this.timeout.xl);
+    async goto(url) {
+        await browser.get(url, this.timeout.xl);
     }
 
     /**
@@ -111,5 +111,30 @@ export default class BasePage {
             // the parent should be 2 less than the length of all found window handlers
             browser.switchTo().window(handles.length - 2);
         });
+    }
+
+    getElement(target){
+        const start = target.substr(0,1);
+        if(start === '#' && target.indexOf(' ') === -1){
+            return element(by.id(target));
+        }
+        else if(start === '.'  && target.indexOf(' ') === -1){
+            return element(by.class(target));
+        }
+        else{
+            return element(by.tagName(target));
+        }
+    }
+
+    click(target){
+        getElement(target).click();
+    }
+
+    typeIn(target, inputString){
+        getElement(target).sendKeys(inputString);
+    }
+
+    choose(target, option){
+         element(by.cssContainingText(target, option)).click();
     }
 }
