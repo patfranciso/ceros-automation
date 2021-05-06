@@ -23,17 +23,7 @@ export default class BasePage {
                 return size.width;
             });
         };
-    }
-
-    /**
-     * wait and verify that a page is loaded
-     * @returns {promise}
-     * @requires a page to include `pageLoaded` method
-     */
-    async loaded() {
-        return browser.wait(async () => {
-            return await this.pageLoaded();
-        }, this.timeout.xl, 'timeout: waiting for page to load. The url is: ' + this.url);
+        browser.ignoreSynchronization = true;
     }
 
     /**
@@ -43,7 +33,6 @@ export default class BasePage {
      */
     async goto() {
         await browser.get(this.url, this.timeout.xl);
-        return await this.loaded();
     }
 
     /**
