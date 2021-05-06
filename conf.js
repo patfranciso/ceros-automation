@@ -14,7 +14,7 @@ exports.config = {
     SELENIUM_PROMISE_MANAGER: false,
 
     specs: ['specs/*Spec.js'],
-    baseUrl: 'inspire.ceros.com',
+    baseUrl: 'https://www.saucedemo.com',
     framework: 'jasmine',
 
     onPrepare: () => {
