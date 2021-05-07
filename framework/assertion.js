@@ -3,5 +3,5 @@ export function currentUrlIs(url) {
 }
 
 export function assertEquals(x,y){
-    expect(x).toEqual(browser.baseUrl + y);
+    expect(x).toEqual(y);
 }
