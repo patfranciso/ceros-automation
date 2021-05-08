@@ -1,6 +1,6 @@
 import { browser } from "protractor";
 import * as Assert from "../framework/assertion.js";
-import I from "../pages/I.js";
+import I from "../pages/AcceptanceTester.js";
 
 describe ('Swag Labs tests', () => {
     beforeEach(async () => {
