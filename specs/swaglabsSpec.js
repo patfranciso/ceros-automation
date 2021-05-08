@@ -1,23 +1,23 @@
 import { browser } from "protractor";
 import { currentUrlIs } from "../framework/assertion.js";
-import swaglabsLoginPage from "../pages/swagLabsLoginPage.js";
+import I from "../pages/I.js";
 
 describe ('Swag Labs tests', () => {
     beforeEach(async () => {
-        await swaglabsLoginPage.goto(browser.baseUrl);
+        await I.goto(browser.baseUrl);
     });
 
     it('should log in with standard user', async ()=> {
-        swaglabsLoginPage.login();
+        I.login();
 
         currentUrlIs('/inventory.html');
     });
 
     it('should add an item to the cart', async () => {
-        swaglabsLoginPage.login();
+        I.login();
 
-        swaglabsLoginPage.click('#add-to-cart-sauce-labs-bolt-t-shirt');
-        swaglabsLoginPage.click('#add-to-cart-sauce-labs-backpack');
+        I.click('#add-to-cart-sauce-labs-bolt-t-shirt');
+        I.click('#add-to-cart-sauce-labs-backpack');
 
         expect($('.shopping_cart_badge').isPresent()).toBeTruthy();
         var badge = element(by.css('.shopping_cart_badge'));
@@ -25,14 +25,14 @@ describe ('Swag Labs tests', () => {
     });
 
     it('should have 6 items on the inventory page', async () => {
-        swaglabsLoginPage.login();
+        I.login();
 
         let count = element.all(by.css('.inventory_item')).count();
         expect(count).toEqual(6);
     });
 
     it('should complete the purchase process of an item from the inventory', async () => {
-        swaglabsLoginPage.login();
+        I.login();
 
 
         element.all(by.css('.btn_inventory')).get(2).click();
@@ -70,7 +70,7 @@ describe ('Swag Labs tests', () => {
 
     // BONUS tests! Not required for the automation challenge, but do these if you can.
     it('sort the inventory items by price, high-to-low', async () => {
-        swaglabsLoginPage.login();
+        I.login();
 
         element(by.cssContainingText('option', 'Price (high to low)')).click();
 
@@ -85,7 +85,7 @@ describe ('Swag Labs tests', () => {
     });
 
     it('sort the inventory items by name, Z-to-A', async () => {
-        swaglabsLoginPage.login();
+        I.login();
 
         element(by.cssContainingText('option', 'Name (Z to A)')).click();
 
