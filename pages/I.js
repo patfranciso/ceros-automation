@@ -6,7 +6,7 @@ const PROBLEM_USER = 'problem_user';
 const PERFORMANCE_GLITCH_USER = 'performance_glitch_user';
 const PASS = 'secret_sauce';
 
-class SwaglabsLoginPage extends BasePage {
+class AcceptanceTester extends BasePage {
     constructor() {
         super();
         this.username = element(by.id('user-name'));
@@ -49,4 +49,4 @@ class SwaglabsLoginPage extends BasePage {
         element(by.cssContainingText(target, option)).click();
     }
 }
-export default new SwaglabsLoginPage();
+export default new AcceptanceTester();

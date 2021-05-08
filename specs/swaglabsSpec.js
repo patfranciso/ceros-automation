@@ -1,5 +1,5 @@
 import { browser } from "protractor";
-import { currentUrlIs } from "../framework/assertion.js";
+import * as Assert from "../framework/assertion.js";
 import I from "../pages/I.js";
 
 describe ('Swag Labs tests', () => {
@@ -10,7 +10,7 @@ describe ('Swag Labs tests', () => {
     it('should log in with standard user', async ()=> {
         I.login();
 
-        currentUrlIs('/inventory.html');
+        Assert.currentUrlIs('/inventory.html');
     });
 
     it('should add an item to the cart', async () => {
@@ -19,9 +19,8 @@ describe ('Swag Labs tests', () => {
         I.click('#add-to-cart-sauce-labs-bolt-t-shirt');
         I.click('#add-to-cart-sauce-labs-backpack');
 
-        expect($('.shopping_cart_badge').isPresent()).toBeTruthy();
-        var badge = element(by.css('.shopping_cart_badge'));
-        expect(badge.getText()).toEqual('2');
+        Assert.inDom('.shopping_cart__badge');
+        Assert.hasText('.shopping_cart_badge', '2');
     });
 
     it('should have 6 items on the inventory page', async () => {
@@ -44,25 +43,23 @@ describe ('Swag Labs tests', () => {
         expect(badge.getText()).toEqual('3');
 
         element(by.css('.shopping_cart_link')).click();
-        currentUrlIs('/cart.html');
+        Assert.currentUrlIs('/cart.html');
 
         element(by.id('checkout')).click();
 
-        currentUrlIs('/checkout-step-one.html');
+        Assert.currentUrlIs('/checkout-step-one.html');
 
         element(by.id('first-name')).sendKeys('standard');
         element(by.id('last-name')).sendKeys('user');
         element(by.id('postal-code')).sendKeys('23401');
 
         element(by.id('continue')).click();
-        currentUrlIs('/checkout-step-two.html');
+        Assert.currentUrlIs('/checkout-step-two.html');
 
-        // $I->see('Payment Information:');
-        // $I->see('Shipping Information:');
         element(by.id('finish')).click();
 
 
-        currentUrlIs('/checkout-complete.html');
+        Assert.currentUrlIs('/checkout-complete.html');
 
         var header_message = element(by.css('.complete-header'));
         expect(header_message.getText()).toEqual('THANK YOU FOR YOUR ORDER');
@@ -97,9 +94,9 @@ describe ('Swag Labs tests', () => {
             });
 
         const expected = ["Test.allTheThings() T-Shirt (Red)", "Sauce Labs Onesie", 
-        "Sauce Labs Fleece Jacket",
-        "Sauce Labs Bolt T-Shirt", "Sauce Labs Bike Light", "Sauce Labs Backpack"
-    ];
+            "Sauce Labs Fleece Jacket",
+            "Sauce Labs Bolt T-Shirt", "Sauce Labs Bike Light", "Sauce Labs Backpack"
+        ];
 
         expect(expected).toEqual(names);
     });

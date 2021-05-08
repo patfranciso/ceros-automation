@@ -36,56 +36,6 @@ export default class BasePage {
     }
 
     /**
-     * Wrappers for expected conditions
-     * I find ECs to be poorly named, so we wrap them in methods
-     * that are 9% more sexy, and allow us to add logging, etc...
-     * @returns {ExpectedCondition}
-     */
-    isVisible(locator) {
-        return protractor.ExpectedConditions.visibilityOf(locator);
-    }
-
-    isNotVisible(locator) {
-        return protractor.ExpectedConditions.invisibilityOf(locator);
-    }
-
-    inDom(locator) {
-        return protractor.ExpectedConditions.presenceOf(locator);
-    }
-
-    notInDom(locator) {
-        return protractor.ExpectedConditions.stalenessOf(locator);
-    }
-
-    isClickable(locator) {
-        return protractor.ExpectedConditions.elementToBeClickable(locator);
-    }
-
-    hasText(locator, text) {
-        return protractor.ExpectedConditions.textToBePresentInElement(locator, text);
-    }
-
-    and(arrayOfFunctions) {
-        return protractor.ExpectedConditions.and(arrayOfFunctions);
-    }
-
-    titleIs(title) {
-        return protractor.ExpectedConditions.titleIs(title);
-    }
-
-    /**
-     * test if an element has a class
-     * @param  {elementFinder} locator - eg. $('div#myId')
-     * @param  {string}  klass  - class name
-     * @return {Boolean} - does the element have the class?
-     */
-    hasClass(locator, klass) {
-        return locator.getAttribute('class').then(classes => {
-            return classes.split(' ').indexOf(klass) !== -1;
-        });
-    }
-
-    /**
      * Webdriver equivalent to hitting Enter/Return key.
      */
     async hitEnter() {
