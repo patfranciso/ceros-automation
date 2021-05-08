@@ -135,6 +135,6 @@ export default class BasePage {
     }
 
     choose(target, option){
-         element(by.cssContainingText(target, option)).click();
+        element(by.cssContainingText(target, option)).click();
     }
 }
