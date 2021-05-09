@@ -28,7 +28,11 @@ class AcceptanceTester extends BasePage {
             return element(by.id(idOrClass));
         }
         else if(start === '.' && target.indexOf(' ') === -1 ){
-            return element(by.class(idOrClass));
+            return element(by.css(target));
+        }
+        else if(start === '.' && target.indexOf(' ') !== -1 ){
+            const [klass, nn] = target.split(' ');
+            return element.all(by.css(klass)).get(Number(nn));
         }
         else{
             return element(by.tagName(target));

@@ -19,50 +19,47 @@ describe ('Swag Labs tests', () => {
         I.click('#add-to-cart-sauce-labs-bolt-t-shirt');
         I.click('#add-to-cart-sauce-labs-backpack');
 
-        Assert.inDom('.shopping_cart__badge');
+        Assert.inDom('.shopping_cart_badge');
         Assert.hasText('.shopping_cart_badge', '2');
     });
 
     it('should have 6 items on the inventory page', async () => {
         I.login();
 
-        let count = element.all(by.css('.inventory_item')).count();
-        expect(count).toEqual(6);
+        Assert.itemCount('.inventory_item', 6);
     });
 
     it('should complete the purchase process of an item from the inventory', async () => {
         I.login();
 
+        I.click('.btn_inventory 2');
+        I.click('.btn_inventory 3');
+        I.click('.btn_inventory 4');
 
-        element.all(by.css('.btn_inventory')).get(2).click();
-        element.all(by.css('.btn_inventory')).get(3).click();
-        element.all(by.css('.btn_inventory')).get(4).click();
+        Assert.inDom('.shopping_cart_badge');
+        Assert.hasText('.shopping_cart_badge', '3');
 
-        expect($('.shopping_cart_badge').isPresent()).toBeTruthy();
-        var badge = element(by.css('.shopping_cart_badge'));
-        expect(badge.getText()).toEqual('3');
-
-        element(by.css('.shopping_cart_link')).click();
+        I.click('.shopping_cart_link');
         Assert.currentUrlIs('/cart.html');
 
-        element(by.id('checkout')).click();
+        I.click('#checkout');
 
         Assert.currentUrlIs('/checkout-step-one.html');
 
-        element(by.id('first-name')).sendKeys('standard');
-        element(by.id('last-name')).sendKeys('user');
-        element(by.id('postal-code')).sendKeys('23401');
 
-        element(by.id('continue')).click();
+        I.typeIn('#first-name', 'standard');
+        I.typeIn('#last-name', 'user');
+        I.typeIn('#postal-code', '23401');
+
+        I.click('#continue');
         Assert.currentUrlIs('/checkout-step-two.html');
 
-        element(by.id('finish')).click();
+        I.click('#finish');
 
 
         Assert.currentUrlIs('/checkout-complete.html');
 
-        var header_message = element(by.css('.complete-header'));
-        expect(header_message.getText()).toEqual('THANK YOU FOR YOUR ORDER');
+        Assert.hasText('.complete-header','THANK YOU FOR YOUR ORDER');
     });
 
     // BONUS tests! Not required for the automation challenge, but do these if you can.

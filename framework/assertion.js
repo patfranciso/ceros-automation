@@ -49,3 +49,8 @@ export function hasClass(locator, klass) {
         return classes.split(' ').indexOf(klass) !== -1;
     });
 }
+
+export function itemCount(klass, expectedCount){
+    let actualCount = element.all(by.css(klass)).count();
+    return expect(actualCount).toEqual(expectedCount);
+}
