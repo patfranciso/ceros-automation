@@ -66,29 +66,21 @@ describe ('Swag Labs tests', () => {
     it('sort the inventory items by price, high-to-low', async () => {
         I.login();
 
-        element(by.cssContainingText('option', 'Price (high to low)')).click();
+        const fn = text => Number(text.substr(1));
+        I.choose('.product_sort_container', 'Price (high to low)');
 
-        const prices = element.all(by.css('.inventory_item_price'))
-            .map((item, _index) => {
-                return item.getText().then(function (text) {
-                    return Number(text.substr(1));
-                });
-            });
+        const prices = I.mapAll('.inventory_item_price', fn);
 
         expect([49.99, 29.99, 15.99, 15.99, 9.99, 7.99]).toEqual(prices);
     });
 
     it('sort the inventory items by name, Z-to-A', async () => {
         I.login();
+        const fn = text => text ;
 
-        element(by.cssContainingText('option', 'Name (Z to A)')).click();
+        I.choose('.product_sort_container', 'Name (Z to A)');
 
-        const names = element.all(by.css('.inventory_item_name'))
-            .map((item, _index) => {
-                return item.getText().then(function (text) {
-                    return text;
-                });
-            });
+        const names = I.mapAll('.inventory_item_name', fn);
 
         const expected = ["Test.allTheThings() T-Shirt (Red)", "Sauce Labs Onesie", 
             "Sauce Labs Fleece Jacket",

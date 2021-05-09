@@ -50,7 +50,14 @@ class AcceptanceTester extends BasePage {
     }
 
     choose(target, option){
-        element(by.cssContainingText(target, option)).click();
+        $(target).element(By.cssContainingText('option', option)).click();
+    }
+
+    mapAll(klass, fn){
+        return element.all(by.css(klass))
+            .map((item, _index) => {
+                return item.getText().then(text => fn(text));
+            });
     }
 }
 export default new AcceptanceTester();
