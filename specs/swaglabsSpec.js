@@ -67,27 +67,27 @@ describe ('Swag Labs tests', () => {
         I.login();
 
         const fn = text => Number(text.substr(1));
+        const unorderedPrices = await I.mapAll('.inventory_item_price', fn);
+        const orderedPrices = unorderedPrices.sort((a,b) => b - a);
         I.choose('.product_sort_container', 'Price (high to low)');
 
-        const prices = I.mapAll('.inventory_item_price', fn);
+        const sortedPrices = I.mapAll('.inventory_item_price', fn);
 
-        expect([49.99, 29.99, 15.99, 15.99, 9.99, 7.99]).toEqual(prices);
+        expect(orderedPrices).toEqual(sortedPrices);
     });
 
     it('sort the inventory items by name, Z-to-A', async () => {
         I.login();
+
         const fn = text => text ;
+        const unorderedNames = await I.mapAll('.inventory_item_name', fn);
+        const orderedNames = unorderedNames.sort().reverse();
 
         I.choose('.product_sort_container', 'Name (Z to A)');
 
-        const names = I.mapAll('.inventory_item_name', fn);
+        const sortedNames = I.mapAll('.inventory_item_name', fn);
 
-        const expected = ["Test.allTheThings() T-Shirt (Red)", "Sauce Labs Onesie", 
-            "Sauce Labs Fleece Jacket",
-            "Sauce Labs Bolt T-Shirt", "Sauce Labs Bike Light", "Sauce Labs Backpack"
-        ];
-
-        expect(expected).toEqual(names);
+        expect(orderedNames).toEqual(sortedNames);
     });
 
 
