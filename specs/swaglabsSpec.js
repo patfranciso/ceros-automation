@@ -67,11 +67,11 @@ describe ('Swag Labs tests', () => {
         I.login();
 
         const fn = text => Number(text.substr(1));
-        const unorderedPrices = await I.mapAll('.inventory_item_price', fn);
+        const unorderedPrices = await I.map('.inventory_item_price', fn);
         const orderedPrices = unorderedPrices.sort((a,b) => b - a);
         I.choose('.product_sort_container', 'Price (high to low)');
 
-        const sortedPrices = I.mapAll('.inventory_item_price', fn);
+        const sortedPrices = I.map('.inventory_item_price', fn);
 
         expect(orderedPrices).toEqual(sortedPrices);
     });
@@ -80,12 +80,12 @@ describe ('Swag Labs tests', () => {
         I.login();
 
         const fn = text => text ;
-        const unorderedNames = await I.mapAll('.inventory_item_name', fn);
+        const unorderedNames = await I.map('.inventory_item_name', fn);
         const orderedNames = unorderedNames.sort().reverse();
 
         I.choose('.product_sort_container', 'Name (Z to A)');
 
-        const sortedNames = I.mapAll('.inventory_item_name', fn);
+        const sortedNames = I.map('.inventory_item_name', fn);
 
         expect(orderedNames).toEqual(sortedNames);
     });

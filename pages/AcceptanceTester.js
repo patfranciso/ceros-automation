@@ -49,11 +49,11 @@ class AcceptanceTester extends BasePage {
         elem.sendKeys(inputString);
     }
 
-    choose(target, option){
-        $(target).element(By.cssContainingText('option', option)).click();
+    choose(target, choice){
+        $(target).element(By.cssContainingText('option', choice)).click();
     }
 
-    mapAll(klass, fn){
+    map(klass, fn){
         return element.all(by.css(klass))
             .map((item, _index) => {
                 return item.getText().then(text => fn(text));
