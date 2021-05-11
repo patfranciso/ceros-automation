@@ -18,4 +18,4 @@
 * `swagLabsLoginPage` extends the basePage but does not implement the required `pageLoaded` behaviour described in `basePage`.
 * There is a duplicate reference to the starting URL for the tests with one value being incorrect.
 * In the `basePage.js` file `goto` is a bad name for a function or method with no input URL parameter.
-* Tests should be `simple` which means that they are easy to read with understanding and easy to maintain. I achieved this by separating the actions performed in the tests into one file `AcceptanceTester.js` and all assertions with newer ones added to the `assertion.js` file. I followed syntax inspired by Codeception.
+* Tests should be `simple` which means that they are easy to read with understanding and easy to maintain. I achieved this by separating the actions performed in the tests into one file `AcceptanceTester.js` and all assertions with newer ones added to the `assertion.js` file. I followed syntax inspired by `Codeception` API for WebDriver.
