@@ -1,5 +1,5 @@
 import { browser } from "protractor";
-import * as Assert from "../framework/assertion.js";
+import * as Assert from "../pages/assertion.js";
 import I from "../pages/AcceptanceTester.js";
 
 describe ('Swag Labs tests', () => {
