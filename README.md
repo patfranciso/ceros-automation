@@ -11,6 +11,10 @@
 * run `node -v` and make sure your node version is 8.x.x or greater
 * `webdriver-manager` _should_ have updated on install, but if not, run `npm run update` to be sure
 
+## Documents
+In the `docs` folder are some files with answers provided for the first 2 questions.
+`docs\Question1.pdf` is for the Test Strategy while
+`docs\TurnAfterACrashBugReport.pdf` is the answer for Manual Testing/Bug reporting.
 ## Best Practices that are not being followed in the original source code
 
 * Tests should `focus on the behavior` of the system but the source code provided encourages the testing of the API of the test framework.
