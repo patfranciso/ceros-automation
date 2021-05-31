@@ -14,11 +14,13 @@
 ## Documents
 In the `docs` folder are the files with answers provided for the first 2 questions.
 * the 3 `docs\Test-Strategy-*.docx` files for the Test Strategy question while
-* `docs\Bugs.xlx` is for Manual Testing/Bug reporting question.
-The `docs\Test-Strategy-Crash.docx` and `docs\Test-Strategy-Crash-Continue.docx` because they are both the essence of the game implemented so far and their failure could affect the feasibility and continuity of the project.
+* `docs\Bugs.xlsx` is for Manual Testing/Bug reporting question.
+
+The `docs\Test-Strategy-Jump.docx` was completed first.
+The `docs\Test-Strategy-Crash.docx` and `docs\Test-Strategy-Crash-Continue.docx` were chosen as the existing features for the Test Strategy because they are both the essence of the game implemented so far and their failure could affect the feasibility and continuity of the project.
 
 ## Completion Time
-The Manual and Automated parts took 2 weeks each for me to complete.
+The Manual and Automated parts took roughly 2 weeks each for me to complete.
 
 ## Best Practices that are not being followed in the original source code
 * Tests should `focus on the behavior` of the system but the source code provided encourages the testing of the API of the test framework.
