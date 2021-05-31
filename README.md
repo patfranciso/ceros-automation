@@ -1,5 +1,5 @@
 ## Setup:
-* Install [Node](http://nodejs.org) (v8.x.x or later)
+* Install [Node](http://nodejs.org) (v14.x.x or later)
 * `npm i` to install the project dependencies
 
 ## Run tests:
@@ -8,15 +8,19 @@
 * run with flake `./flake conf.js`
 
 ## Troubleshooting
-* run `node -v` and make sure your node version is 8.x.x or greater
+* run `node -v` and make sure your node version is 14.x.x or greater
 * `webdriver-manager` _should_ have updated on install, but if not, run `npm run update` to be sure
 
 ## Documents
-In the `docs` folder are some files with answers provided for the first 2 questions.
-* `docs\Question1.pdf` is for the Test Strategy while
-* `docs\TurnLeftAfterACrashBugReport.pdf` and `docs\TurnRightAfterACrashBugReport.pdf` are for Manual Testing/Bug reporting.
-## Best Practices that are not being followed in the original source code
+In the `docs` folder are the files with answers provided for the first 2 questions.
+* the 3 `docs\Test-Strategy-*.docx` files for the Test Strategy question while
+* `docs\Bugs.xlx` is for Manual Testing/Bug reporting question.
+The `docs\Test-Strategy-Crash.docx` and `docs\Test-Strategy-Crash-Continue.docx` because they are both the essence of the game implemented so far and their failure could affect the feasibility and continuity of the project.
 
+## Completion Time
+The Manual and Automated parts took 2 weeks each for me to complete.
+
+## Best Practices that are not being followed in the original source code
 * Tests should `focus on the behavior` of the system but the source code provided encourages the testing of the API of the test framework.
 * `basePage` is a mixture of Arrange, Act and Assert flows of testing which makes it quite vague.
 * `swagLabsLoginPage` extends the basePage but does not implement the required `pageLoaded` behaviour described in `basePage`.
